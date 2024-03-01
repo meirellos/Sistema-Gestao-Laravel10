@@ -158,15 +158,18 @@
                 @yield('content')
 
 
-                
-                </div>
-            </main>
+
         </div>
+        </main>
     </div>
-    <script src="{{ asset('js/color-modes.js') }}"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/chart.umd.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/color-modes.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+    
+    <script src="{{ asset('js/project.js') }}"></script>
+
 </body>
 
 </html>

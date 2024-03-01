@@ -17,5 +17,11 @@ class ProdutosSeeder extends Seeder
                 'valor' => '20.00'
             ]
         );
+        Produto::create(
+            [
+                'nome' => 'Bermuda',
+                'valor' => '200.00'
+            ]
+        );
     }
 }

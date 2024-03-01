@@ -22,7 +22,20 @@ class ProdutosController extends Controller
         return view('pages.produtos.paginacao', compact('findProdutos'));
     }
 
-    public function delete(Request $request){
-        
+    public function adicionarProduto(Request $request){
+        //dd($request->method());
+        if($request->method() == 'POST'){
+            //Adiciona o novo produto
+        }
+        return view('pages.produto.create');
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $findProdUni = Produto::find($id);
+        $findProdUni->delete();
+
+        return response()->json(['success' => true]);
     }
 }
