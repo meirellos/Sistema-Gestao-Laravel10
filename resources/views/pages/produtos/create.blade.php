@@ -15,11 +15,12 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Valor</label>
-            <input id="mask_valor" value="{{ old('valor') }}"  class="form-control @error('valor') is-invalid @enderror" name="valor">
+            <input id="mask_valor" value="{{ old('valor') }}" class="form-control @error('valor') is-invalid @enderror"
+                name="valor">
             @if ($errors->has('valor'))
                 <div class="invalid-feedback">{{ $errors->first('valor') }}</div>
             @endif
         </div>
-        <button type="submit" class="btn btn-success">Adicionar</button>
+        <button type="submit" class="btn btn-success">Gravar</button>
     </form>
 @endsection

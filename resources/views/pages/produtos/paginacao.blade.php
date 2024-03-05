@@ -8,7 +8,7 @@
         <form action="{{ route('produto.index') }}" method="get">
             <input type="text" name="pesquisar" id="" placeholder="Digite o nome">
             <button>Buscar</button>
-            <a href="{{route('adicionar.produto')}}" type="button" class="btn btn-success float-end">Adicionar Produto</a>
+            <a href="{{ route('adicionar.produto') }}" type="button" class="btn btn-success float-end">Adicionar Produto</a>
         </form>
         <div class="table-responsive small mt-4">
             @if ($findProdutos->isEmpty())
@@ -28,7 +28,8 @@
                                 <td>{{ $produto->nome }}</td>
                                 <td>{{ 'R$' . ' ' . number_format($produto->valor, 2, ',', '.') }}</td>
                                 <td>
-                                    <a href="" class="btn btn-light btn-sm">Editar</a>
+                                    <a href="{{ route('atualizar.produto', $produto->id) }}"
+                                        class="btn btn-light btn-sm">Editar</a>
                                     <meta name="csrf-token" content="{{ csrf_token() }}">
                                     <a onclick="deleteItem( '{{ route('produto.delete') }}', {{ $produto->id }} )"
                                         class="btn btn-danger btn-sm">Excluir</a>

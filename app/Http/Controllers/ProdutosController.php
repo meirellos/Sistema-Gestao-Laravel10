@@ -36,13 +36,37 @@ class ProdutosController extends Controller
             //Adiciona o novo produto
             $data = $request->all();
             $componentes = new Componentes();
-
             $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
+
             Produto::create($data);
 
             return redirect()->route('produto.index');
         }
         return view('pages.produtos.create');
+    }
+
+    public function atualizarProduto(Request $request, $id)
+    {
+        if ($request->isMethod('PUT')) {
+            $validacao = $request->validate([
+                'nome' => 'required',
+                'valor' => 'required'
+            ]);
+
+            //Atualizar um produto
+            $data = $request->all();
+            $componentes = new Componentes();
+            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
+
+            $searchProd = Produto::find($id);
+            $searchProd->update($data);
+            
+            return redirect()->route('produto.index');
+        }
+
+        //dd($findProduto);
+        $catchProduto = Produto::where('id', $id)->first();
+        return view('pages.produtos.update', compact('catchProduto'));
     }
 
     public function delete(Request $request)
