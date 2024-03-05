@@ -4,7 +4,7 @@ function deleteItem(rotaUrl, idItem) {
       url: rotaUrl,
       method: "delete",
       headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
       },
       data: {
         id: idItem,
@@ -18,9 +18,9 @@ function deleteItem(rotaUrl, idItem) {
     })
       .done(function (data) {
         $.unblockUI();
-        if (data.success == true){
+        if (data.success == true) {
           window.location.reload();
-        } else{
+        } else {
           alert("Não foi possível deletar o item");
         }
       })
@@ -30,3 +30,7 @@ function deleteItem(rotaUrl, idItem) {
       });
   }
 }
+
+$("#mask_valor").mask("#.##0,00", {
+  reverse: true,
+});
