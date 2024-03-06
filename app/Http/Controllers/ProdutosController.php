@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormRequestProduto;
 use App\Models\Componentes;
 use App\Models\Produto;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
@@ -40,6 +41,7 @@ class ProdutosController extends Controller
 
             Produto::create($data);
 
+            Toastr::success('Adicionado com sucesso!');
             return redirect()->route('produto.index');
         }
         return view('pages.produtos.create');
