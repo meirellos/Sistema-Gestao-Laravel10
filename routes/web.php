@@ -50,4 +50,6 @@ Route::prefix('vendas')->group(function(){
 
     Route::get('/adicionarVenda', [VendasController::class, 'adicionarVenda'])->name('adicionar.venda');
     Route::post('/adicionarVenda', [VendasController::class, 'adicionarVenda'])->name('adicionar.venda');
+
+    Route::get('/enviaComprovanteEmail/{id}', [VendasController::class, 'enviaComprovanteEmail'])->name('enviaComprovanteEmail.venda');
 });
