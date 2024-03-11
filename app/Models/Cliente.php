@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'email',
+        'endereco',
+        'logradouro',
+        'cep',
+        'bairro'
+    ];
+
+    public function procurarClientes(string $search = '')
+    {
+        $cliente = $this->where(function ($query) use ($search) {
+            if ($search) {
+                $query->where('nome', $search)
+                    ->orWhere('nome', 'LIKE', "%{$search}%");
+            }
+        })->get();
+
+        return $cliente;
+    }
 }
