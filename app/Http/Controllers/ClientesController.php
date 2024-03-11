@@ -48,30 +48,26 @@ class ClientesController extends Controller
         if ($request->isMethod('PUT')) {
             $validacao = $request->validate([
                 'nome' => 'required',
-                'valor' => 'required'
             ]);
 
-            //Atualizar um produto
+            //Atualizar um cliente
             $data = $request->all();
-            $componentes = new Componentes();
-            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
 
-            $searchProd = Cliente::find($id);
-            $searchProd->update($data);
+            $searchCli = Cliente::find($id);
+            $searchCli->update($data);
 
-            return redirect()->route('clientes.index');
+            return redirect()->route('cliente.index');
         }
 
-        //dd($findProduto);
-        $catchProduto = Cliente::where('id', $id)->first();
-        return view('pages.clientes.update', compact('catchProduto'));
+        $catchCli = Cliente::where('id', $id)->first();
+        return view('pages.clientes.update', compact('catchCli'));
     }
 
     public function delete(Request $request)
     {
         $id = $request->id;
-        $findProdUni = Cliente::find($id);
-        $findProdUni->delete();
+        $findCliUni = Cliente::find($id);
+        $findCliUni->delete();
 
         return response()->json(['success' => true]);
     }
