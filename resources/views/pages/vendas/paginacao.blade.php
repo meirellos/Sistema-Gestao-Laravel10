@@ -6,7 +6,7 @@
     </div>
     <div class="">
         <form action="{{ route('venda.index') }}" method="get">
-            <input type="text" name="pesquisar" id="" placeholder="Digite o nome">
+            <input type="text" name="pesquisar" id="" placeholder="Digite o numero da venda">
             <button>Buscar</button>
             <a href="{{ route('adicionar.venda') }}" type="button" class="btn btn-success float-end">Adicionar Cliente</a>
         </form>
@@ -30,8 +30,11 @@
                                 <td>{{ $venda->produto->nome }}</td>
                                 <td>{{ $venda->cliente->nome }}</td>
                                 <td>
-                                    <a href="{{route('enviaComprovanteEmail.venda', $venda->id)}}"
+                                    <a href="{{ route('enviaComprovanteEmail.venda', $venda->id) }}"
                                         class="btn btn-light btn-sm">Enviar E-mail</a>
+                                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                                    <a onclick="deleteItem( '{{ route('venda.delete') }}', {{ $venda->id }} )"
+                                        class="btn btn-danger btn-sm">Excluir</a>
                                 </td>
                             </tr>
                         @endforeach

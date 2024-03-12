@@ -68,4 +68,13 @@ class VendasController extends Controller
 
         return redirect()->route('venda.index');
     }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $findVendaUni = Venda::find($id);
+        $findVendaUni->delete();
+
+        return response()->json(['success' => true]);
+    }
 }

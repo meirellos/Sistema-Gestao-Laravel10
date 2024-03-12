@@ -62,7 +62,7 @@ class ProdutosController extends Controller
 
             $searchProd = Produto::find($id);
             $searchProd->update($data);
-            
+
             return redirect()->route('produto.index');
         }
 
@@ -73,6 +73,10 @@ class ProdutosController extends Controller
 
     public function delete(Request $request)
     {
+        $ids = $request->input('delete');
+        if ($ids) {
+            Produto::destroy($ids);
+        }
         $id = $request->id;
         $findProdUni = Produto::find($id);
         $findProdUni->delete();

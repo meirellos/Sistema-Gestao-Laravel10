@@ -1,0 +1,19 @@
+*{
+    font-family: "Nunito", sans-serif;
+}
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(192, 88, 255, 1) 0%,
+    rgba(45, 117, 255, 1) 100%
+  );
+}
+
+.cards{
+    background: #dedede;
+    width: 960px;
+    height: 570px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
