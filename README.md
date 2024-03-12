@@ -1,6 +1,6 @@
 # Setup Docker Com Laravel 10 e  PHP 8.1
 
-## Projeto Sistema de Gestão, com cadastro de usuários, produtos e vendas. Possuí tela de login com middleware e também tela de dashboard. Foi utilizado Php 8.1, Laravel 10, Bootstrap, Docker. (Projeto para estudo)
+#### Projeto Sistema de Gestão, com cadastro de usuários, produtos e vendas. Possuí tela de login com middleware e também tela de dashboard. Foi utilizado Php 8.1, Laravel 10, Bootstrap, Docker. (Projeto para estudo)
 
 ### Passo a passo
 - Baixe o .Zip do projeto
