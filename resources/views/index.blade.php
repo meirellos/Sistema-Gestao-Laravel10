@@ -111,7 +111,9 @@
 <body>
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Gestão</a>
-
+        @if (Auth::check())
+        Olá, {{ Auth::user()->name }}
+    @endif
         <ul class="navbar-nav flex-row d-md-none">
             <li class="nav-item text-nowrap">
                 <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse"
@@ -120,6 +122,7 @@
                     <svg class="bi">
                         <use xlink:href="#search" />
                     </svg>
+                    
                 </button>
             </li>
             <li class="nav-item text-nowrap">
@@ -141,7 +144,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="min-height:80vh">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="min-height:100vh">
                 <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
                     aria-labelledby="sidebarMenuLabel">
                     <div class="offcanvas-header">

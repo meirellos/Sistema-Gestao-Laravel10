@@ -75,6 +75,7 @@ class VendasController extends Controller
         $findVendaUni = Venda::find($id);
         $findVendaUni->delete();
 
+        Toastr::success('Venda excluida com sucesso!');
         return response()->json(['success' => true]);
     }
 }

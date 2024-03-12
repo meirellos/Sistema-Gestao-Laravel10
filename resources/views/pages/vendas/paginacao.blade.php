@@ -8,7 +8,7 @@
         <form action="{{ route('venda.index') }}" method="get">
             <input type="text" name="pesquisar" id="" placeholder="Digite o numero da venda">
             <button>Buscar</button>
-            <a href="{{ route('adicionar.venda') }}" type="button" class="btn btn-success float-end">Adicionar Cliente</a>
+            <a href="{{ route('adicionar.venda') }}" type="button" class="btn btn-success float-end">Adicionar Venda</a>
         </form>
         <div class="table-responsive small mt-4">
             @if ($findVendas->isEmpty())
@@ -20,6 +20,8 @@
                             <th scope="col">Numeração</th>
                             <th scope="col">Produto</th>
                             <th scope="col">Cliente</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Data da Venda</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -29,6 +31,8 @@
                                 <td>{{ $venda->numero_da_venda }}</td>
                                 <td>{{ $venda->produto->nome }}</td>
                                 <td>{{ $venda->cliente->nome }}</td>
+                                <td>{{ $venda->cliente->email }}</td>
+                                <td>{{ $venda->created_at }}</td>
                                 <td>
                                     <a href="{{ route('enviaComprovanteEmail.venda', $venda->id) }}"
                                         class="btn btn-light btn-sm">Enviar E-mail</a>

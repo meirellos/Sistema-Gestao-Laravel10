@@ -1,5 +1,5 @@
-*{
-    font-family: "Nunito", sans-serif;
+* {
+  font-family: "Nunito", sans-serif;
 }
 body {
   background: linear-gradient(
@@ -9,11 +9,120 @@ body {
   );
 }
 
-.cards{
-    background: #dedede;
-    width: 960px;
-    height: 570px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards {
+  background: #fff;
+  width: 960px;
+  height: 570px;
+  display: flex;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+}
+
+.img-card {
+  background: linear-gradient(
+    225deg,
+    rgba(192, 88, 255, 1) 0%,
+    rgba(45, 117, 255, 1) 100%
+  );
+  width: 433px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 18px 0 0 18px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+.img-card h1 {
+  color: #fff;
+  font-size: 50px;
+  margin-top: 80px;
+  font-weight: bold;
+}
+
+.login-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 527px;
+}
+
+.login-card h1 {
+  color: #686868;
+  font-size: 50px;
+  margin-top: 80px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.login-card form {
+  margin-top: 40px;
+}
+
+.login-card input {
+  width: 282px;
+  height: 43px;
+  border: none;
+  background: #eeeeee;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+  color: #696969 !important;
+  transition: 0.2s ease-in-out 0s;
+}
+
+.login-card input:hover {
+  transform: scale(1.05);
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.min-senha{
+    font-size: 13px;
+    color: #696969;
+}
+
+.btn-login {
+  background: linear-gradient(
+    90deg,
+    rgba(45, 117, 255, 1) 0%,
+    rgba(192, 88, 255, 1) 100%
+  );
+  color: #fff !important;
+  font-weight: bold !important;
+  height: 45px;
+  width: 197px;
+  border-radius: 20px !important;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  transition: 0.2s ease-in-out 0s;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+}
+
+.login-op {
+  text-decoration: none;
+  color: #696969;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.login-op:hover {
+  color: #757575;
 }

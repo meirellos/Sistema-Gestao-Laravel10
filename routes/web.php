@@ -18,63 +18,70 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('index');
+    return redirect()->route('login.index');
 });
 
 Route::prefix('login')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+    Route::get('/register', [LoginController::class, 'register'])->name('login.register');
+    Route::post('/register', [LoginController::class, 'register'])->name('login.register');
+
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-});
 
-//localhost:8989/produtos
-Route::prefix('produtos')->group(function () {
-    Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    });
 
-    Route::get('/adicionarProduto', [ProdutosController::class, 'adicionarProduto'])->name('adicionar.produto');
-    Route::post('/adicionarProduto', [ProdutosController::class, 'adicionarProduto'])->name('adicionar.produto');
+    //localhost:8989/produtos
+    Route::prefix('produtos')->group(function () {
+        Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
 
-    Route::get('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
-    Route::put('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
+        Route::get('/adicionarProduto', [ProdutosController::class, 'adicionarProduto'])->name('adicionar.produto');
+        Route::post('/adicionarProduto', [ProdutosController::class, 'adicionarProduto'])->name('adicionar.produto');
 
-    Route::delete('/delete', [ProdutosController::class, 'delete'])->name('produto.delete');
-});
+        Route::get('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
+        Route::put('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
 
-Route::prefix('clientes')->group(function () {
-    Route::get('/', [ClientesController::class, 'index'])->name('cliente.index');
+        Route::delete('/delete', [ProdutosController::class, 'delete'])->name('produto.delete');
+    });
 
-    Route::get('/adicionarCliente', [ClientesController::class, 'adicionarCliente'])->name('adicionar.cliente');
-    Route::post('/adicionarCliente', [ClientesController::class, 'adicionarCliente'])->name('adicionar.cliente');
+    Route::prefix('clientes')->group(function () {
+        Route::get('/', [ClientesController::class, 'index'])->name('cliente.index');
 
-    Route::get('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
-    Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
+        Route::get('/adicionarCliente', [ClientesController::class, 'adicionarCliente'])->name('adicionar.cliente');
+        Route::post('/adicionarCliente', [ClientesController::class, 'adicionarCliente'])->name('adicionar.cliente');
 
-    Route::delete('/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
-});
+        Route::get('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
+        Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
 
-Route::prefix('vendas')->group(function () {
-    Route::get('/', [VendasController::class, 'index'])->name('venda.index');
+        Route::delete('/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
+    });
 
-    Route::get('/adicionarVenda', [VendasController::class, 'adicionarVenda'])->name('adicionar.venda');
-    Route::post('/adicionarVenda', [VendasController::class, 'adicionarVenda'])->name('adicionar.venda');
+    Route::prefix('vendas')->group(function () {
+        Route::get('/', [VendasController::class, 'index'])->name('venda.index');
 
-    Route::get('/enviaComprovanteEmail/{id}', [VendasController::class, 'enviaComprovanteEmail'])->name('enviaComprovanteEmail.venda');
+        Route::get('/adicionarVenda', [VendasController::class, 'adicionarVenda'])->name('adicionar.venda');
+        Route::post('/adicionarVenda', [VendasController::class, 'adicionarVenda'])->name('adicionar.venda');
 
-    Route::delete('/delete', [VendasController::class, 'delete'])->name('venda.delete');
-});
+        Route::get('/enviaComprovanteEmail/{id}', [VendasController::class, 'enviaComprovanteEmail'])->name('enviaComprovanteEmail.venda');
 
-Route::prefix('usuarios')->group(function () {
-    Route::get('/', [UsuariosController::class, 'index'])->name('usuario.index');
+        Route::delete('/delete', [VendasController::class, 'delete'])->name('venda.delete');
+    });
 
-    Route::get('/adicionarUsuario', [UsuariosController::class, 'adicionarUsuario'])->name('adicionar.usuario');
-    Route::post('/adicionarUsuario', [UsuariosController::class, 'adicionarUsuario'])->name('adicionar.usuario');
+    Route::prefix('usuarios')->group(function () {
+        Route::get('/', [UsuariosController::class, 'index'])->name('usuario.index');
 
-    Route::get('/atualizarUsuario/{id}', [UsuariosController::class, 'atualizarUsuario'])->name('atualizar.usuario');
-    Route::put('/atualizarUsuario/{id}', [UsuariosController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+        Route::get('/adicionarUsuario', [UsuariosController::class, 'adicionarUsuario'])->name('adicionar.usuario');
+        Route::post('/adicionarUsuario', [UsuariosController::class, 'adicionarUsuario'])->name('adicionar.usuario');
 
-    Route::delete('/delete', [UsuariosController::class, 'delete'])->name('usuario.delete');
+        Route::get('/atualizarUsuario/{id}', [UsuariosController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+        Route::put('/atualizarUsuario/{id}', [UsuariosController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+
+        Route::delete('/delete', [UsuariosController::class, 'delete'])->name('usuario.delete');
+    });
 });

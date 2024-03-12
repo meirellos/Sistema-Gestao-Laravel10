@@ -6,7 +6,7 @@
     </div>
     <div class="dashboard text-center">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Produtos Cadastrados</h5>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Clientes Cadastrados</h5>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Vendas efetuadas</h5>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Usuários cadastrados</h5>
